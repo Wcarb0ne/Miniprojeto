@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eSWkklGNIKuXUiYKjRZZJVh0hP9kC5TM2m4fBf7re17EcbcdxnCcj7ZtfjCikH36aBeI7uxU+cyaxNh1HmVjNw==",
+  "dgSpecHash": "rr6CCKFF1xoJbwqE9pCNspmKYpq18drxqDaMi4cGrTLeMEBHeqGznfNfeHrrN3TtcIEz6v9TFNbAsVIhGn77Zw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wellington.carbone\\Desktop\\C#\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\wellington.carbone\\source\\repos\\Wcarb0ne\\Miniprojeto\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wellington.carbone\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\wellington.carbone\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
