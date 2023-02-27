@@ -14,15 +14,14 @@ namespace WinFormsApp1
     public partial class FrmCategoria : Form
     {
         string stringConexao = "" +
-            "data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
-            "initial catalog= MiniProjeto;" +
-            "User ID=admwellington;" +
-            "password=elaine1988";
-
-        //"data source=localhost;" +
-        //"initial Catalog= MiniprojetoT13wgt;"+
-        //"User ID=sa;" +
-        //"password=123456";
+        "data source=localhost;" +
+        "initial Catalog= MiniprojetoT13wgt;"+
+        "User ID=sa;" +
+        "password=123456";
+        //"data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
+        //"initial catalog= MiniProjeto;" +
+        //"User ID=admwellington;" +
+        //"password=elaine1988";
 
         private void testarConexao()
         {
@@ -158,6 +157,42 @@ namespace WinFormsApp1
                 if (i == 1)
                 {
                     MessageBox.Show("Dados alterados com sucesso.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        private void btoPesquisa_Click(object sender, EventArgs e)
+        {
+            string sql = "select * from Categoria where id_Categoria=" + txtCodigo.Text;
+
+            SqlConnection conexao = new SqlConnection(stringConexao);
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader Reader;
+            conexao.Open();
+            try
+            {
+                Reader = cmd.ExecuteReader();
+                if (Reader.Read())
+                {
+
+                    txtNome.Text = Reader[1].ToString();
+                    txtDescricao.Text = Reader[2].ToString();
+                    txtObs.Text = Reader[3].ToString();
+                    cboStatus.SelectedItem = Reader[4].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("codigo de Categoria inexistente!");
                 }
 
             }

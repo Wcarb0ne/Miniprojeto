@@ -90,6 +90,7 @@
             this.btoCadastro.TabIndex = 1;
             this.btoCadastro.Text = "&Cadastrar";
             this.btoCadastro.UseVisualStyleBackColor = true;
+            this.btoCadastro.Click += new System.EventHandler(this.btoCadastro_Click);
             // 
             // btoAlterar
             // 
@@ -99,6 +100,7 @@
             this.btoAlterar.TabIndex = 1;
             this.btoAlterar.Text = "&Alterar";
             this.btoAlterar.UseVisualStyleBackColor = true;
+            this.btoAlterar.Click += new System.EventHandler(this.btoAlterar_Click);
             // 
             // btoExcluir
             // 
@@ -108,6 +110,7 @@
             this.btoExcluir.TabIndex = 1;
             this.btoExcluir.Text = "&Excluir";
             this.btoExcluir.UseVisualStyleBackColor = true;
+            this.btoExcluir.Click += new System.EventHandler(this.btoExcluir_Click);
             // 
             // btolimpar
             // 
@@ -244,7 +247,8 @@
             this.txtDataCadastro.Name = "txtDataCadastro";
             this.txtDataCadastro.Size = new System.Drawing.Size(121, 23);
             this.txtDataCadastro.TabIndex = 0;
-            this.txtDataCadastro.Text = "      __ /__ /____";
+            this.txtDataCadastro.Tag = "";
+            this.txtDataCadastro.Text = "      ";
             this.txtDataCadastro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label10
@@ -327,7 +331,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Name = "FrmProduto";
-            this.Text = "Categoria";
+            this.Text = "Produto";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

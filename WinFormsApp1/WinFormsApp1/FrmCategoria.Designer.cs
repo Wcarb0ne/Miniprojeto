@@ -197,6 +197,7 @@
             this.btoPesquisa.TabIndex = 7;
             this.btoPesquisa.Text = "...";
             this.btoPesquisa.UseVisualStyleBackColor = true;
+            this.btoPesquisa.Click += new System.EventHandler(this.btoPesquisa_Click);
             // 
             // btoExluir
             // 
