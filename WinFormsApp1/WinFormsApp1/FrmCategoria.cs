@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,34 @@ namespace WinFormsApp1
 {
     public partial class FrmCategoria : Form
     {
+        string stringConexao = "" +
+            "data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
+            "initial catalog= MiniProjeto;" +
+            "User ID=admwellington;" +
+            "password=elaine1988";
+
+        //"data source=localhost;" +
+        //"initial Catalog= MiniprojetoT13wgt;"+
+        //"User ID=sa;" +
+        //"password=123456";
+
+        private void testarConexao()
+        {
+            SqlConnection conn = new SqlConnection(stringConexao);
+
+            try
+            {
+                conn.Open();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro:" + ex.ToString());
+                Application.Exit();
+
+            }
+
+        }
         public FrmCategoria()
         {
             InitializeComponent();
@@ -33,14 +62,113 @@ namespace WinFormsApp1
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//botão excluir
         {
+            string sql = "delete from Categoria where id_Categoria= " + txtCodigo.Text;
 
+
+            SqlConnection conexao = new SqlConnection(stringConexao);
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                conexao.Open();
+                int i = cmd.ExecuteNonQuery();
+                if (i == 1)
+                {
+                    MessageBox.Show("Dados exluidos com sucesso");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conexao.Close();
+            }
         }
 
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btoCadastrar_Click(object sender, EventArgs e)
+        {
+            string sql = "insert into Categoria" +
+             "(" +
+             "nome_Categoria," +
+               " descricao_Categoria," +
+               " obs_Categoria," +
+               " status_Categoria" +
+               ")" +
+                " values" +
+                "(" +
+                "'" + txtNome.Text + "'," +
+                "'" + txtDescricao.Text + "'," +
+                "'" + txtObs.Text + "'," +
+                "'" + cboStatus.SelectedItem + "'" +
+
+                ")";
+            SqlConnection conn = new SqlConnection(stringConexao);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            conn.Open();
+
+            try
+            {
+                int i = cmd.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    MessageBox.Show("Cadastro realizado com sucesso");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void btoAlterar_Click(object sender, EventArgs e)
+        {
+            string sql = "update Categoria set" +
+
+              " nome_Categoria= '" + txtNome.Text + "'," +
+              " descricao_Categoria='" + txtDescricao.Text + "'," +
+              " obs_Categoria='" + txtObs.Text + "'," +
+              " status_Categoria='" + cboStatus.SelectedItem + "'" +
+              " where id_Categoria=" + txtCodigo.Text;
+
+
+            SqlConnection conexao = new SqlConnection(stringConexao);
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                conexao.Open();
+
+                int i = cmd.ExecuteNonQuery();
+                if (i == 1)
+                {
+                    MessageBox.Show("Dados alterados com sucesso.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conexao.Close();
+            }
         }
     }
 }

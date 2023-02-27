@@ -44,8 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.btoPesquisa = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btoExluir = new System.Windows.Forms.Button();
+            this.btoAlterar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cboIdcategoria
@@ -82,6 +82,7 @@
             this.btoCadastrar.TabIndex = 1;
             this.btoCadastrar.Text = "&Cadastrar";
             this.btoCadastrar.UseVisualStyleBackColor = true;
+            this.btoCadastrar.Click += new System.EventHandler(this.btoCadastrar_Click);
             // 
             // label2
             // 
@@ -197,33 +198,33 @@
             this.btoPesquisa.Text = "...";
             this.btoPesquisa.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btoExluir
             // 
-            this.button1.Location = new System.Drawing.Point(171, 251);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "&Excluir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btoExluir.Location = new System.Drawing.Point(171, 251);
+            this.btoExluir.Name = "btoExluir";
+            this.btoExluir.Size = new System.Drawing.Size(63, 23);
+            this.btoExluir.TabIndex = 8;
+            this.btoExluir.Text = "&Excluir";
+            this.btoExluir.UseVisualStyleBackColor = true;
+            this.btoExluir.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btoAlterar
             // 
-            this.button2.Location = new System.Drawing.Point(93, 251);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "&Alterar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
+            this.btoAlterar.Location = new System.Drawing.Point(102, 251);
+            this.btoAlterar.Name = "btoAlterar";
+            this.btoAlterar.Size = new System.Drawing.Size(63, 23);
+            this.btoAlterar.TabIndex = 9;
+            this.btoAlterar.Text = "Alterar";
+            this.btoAlterar.UseVisualStyleBackColor = true;
+            this.btoAlterar.Click += new System.EventHandler(this.btoAlterar_Click);
             // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 307);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btoAlterar);
+            this.Controls.Add(this.btoExluir);
             this.Controls.Add(this.btoPesquisa);
             this.Controls.Add(this.cboStatus);
             this.Controls.Add(this.label6);
@@ -266,7 +267,7 @@
         private Label label6;
         private ComboBox cboStatus;
         private Button btoPesquisa;
-        private Button button1;
-        private Button button2;
+        private Button btoExluir;
+        private Button btoAlterar;
     }
 }

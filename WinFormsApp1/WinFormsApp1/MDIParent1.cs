@@ -116,10 +116,7 @@ namespace WinFormsApp1
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCadastro cadastro = new FrmCadastro();
-            FrmCadastro frmCadastro = new FrmCadastro();
-            this.CloseAllToolStripMenuItem_Click(sender, e);
-            
+            Application.Exit();
         }
     }
 }

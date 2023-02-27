@@ -6,10 +6,15 @@ namespace WinFormsApp1
     public partial class FrmCadastro : Form
     {
         string stringConexao = "" +
-            "data source=localhost;" +
-            "initial Catalog= MiniprojetoT13wgt;"+
-            "User ID=sa;" +
-            "password=123456";
+            "data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
+            "initial catalog= MiniProjeto;" +
+            "User ID=admwellington;" +
+            "password=elaine1988";
+
+            //"data source=localhost;" +
+            //"initial Catalog= MiniprojetoT13wgt;"+
+            //"User ID=sa;" +
+            //"password=123456";
 
         private void testarConexao()
         {
