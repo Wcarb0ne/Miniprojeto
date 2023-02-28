@@ -6,15 +6,15 @@ namespace WinFormsApp1
     public partial class FrmCadastro : Form
     {
         string stringConexao = "" +
-            //"data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
-            //"initial catalog= MiniProjeto;" +
-            //"User ID=admwellington;" +
-            //"password=elaine1988";
-
-            "data source=localhost;" +
-            "initial Catalog= MiniprojetoT13wgt;"+
-            "User ID=sa;" +
-            "password=123456";
+            "data source=DESKTOP-UKENASA\\SQLEXPRESS;" +
+            "initial catalog= MiniProjeto;" +
+            "User ID=admwellington;" +
+            "password=elaine1988";
+        
+            //"data source=localhost;" +
+            //"initial Catalog= MiniprojetoT13wgt;"+
+            //"User ID=sa;" +
+            //"password=123456";
 
         private void testarConexao()
         {
@@ -51,6 +51,7 @@ namespace WinFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             testarConexao();
+            
         }
 
         private void btoSair_Click(object sender, EventArgs e)
@@ -147,9 +148,7 @@ namespace WinFormsApp1
             {
                 conn.Close();   
             }
-
-
-                
+   
             }
             }
 
@@ -313,37 +312,64 @@ namespace WinFormsApp1
 
         private void gridCadastro_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-             //= int.Parse(gridCadastro.Rows[e.RowIndex].Cells[0].Value.ToString());
-        }
-
-        private void txtBdpesquisar_TextChanged(object sender, EventArgs e)
-        {
-            void CarregarDataGrid()
-            {
-                string sql = "select codigo_Usuario as 'ID',"+
+            string sql = "select codigo_Usuario as 'ID'," +
                     " nome_Usuario as 'Nome'," +
                     " status_Usuario as 'Status'," +
                     " obs_Usuario as 'Observação'," +
                     " from Usuario where nome_Usuario like '%" + txtNome.Text + "%'";
 
-                SqlConnection conexao= new SqlConnection(stringConexao);
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, conexao);
-                DataSet ds = new DataSet();
-                conexao.Open();
+            SqlConnection conexao = new SqlConnection(stringConexao);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, conexao);
+            DataSet ds = new DataSet();
+            conexao.Open();
 
-                try
-                {
-                    adapter.Fill(ds);
-                    gridCadastro.DataSource = ds.Tables[0];
-                    gridCadastro.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    gridCadastro.AutoResizeRow(0, DataGridViewAutoSizeRowMode.AllCellsExceptHeader);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                finally { conexao.Close(); }
+            try
+            {
+                adapter.Fill(ds);
+                gridCadastro.DataSource = ds.Tables[0];
+                gridCadastro.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                gridCadastro.AutoResizeRow(0, DataGridViewAutoSizeRowMode.AllCellsExceptHeader);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally { conexao.Close(); }
+
+            txtCodigo.Text = gridCadastro.CurrentRow.Cells["codigo_Usuario"].Value.ToString();
+            CarregarDatagrid();
+            
+        }//_codigo= int.Parse(gridCadastro.Rows[e.RowIndex].Cells[0].Value.ToString());
+         //this.Close();
+        private void txtBdpesquisar_TextChanged(object sender, EventArgs e)
+        {
+             CarregarDatagrid();
+        }
+        void CarregarDatagrid()
+        {
+            string sql = "select codigo_Usuario as 'ID'," +
+                       " nome_Usuario as 'Nome'," +
+                       " status_Usuario as 'Status'," +
+                       " obs_Usuario as 'Observação'," +
+                       " from Usuario where nome_Usuario like '%" + txtNome.Text + "%'";
+
+            SqlConnection conexao = new SqlConnection(stringConexao);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, conexao);
+            DataSet ds = new DataSet();
+            conexao.Open();
+
+            try
+            {
+                adapter.Fill(ds);
+                gridCadastro.DataSource = ds.Tables[0];
+                gridCadastro.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                gridCadastro.AutoResizeRow(0, DataGridViewAutoSizeRowMode.AllCellsExceptHeader);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally { conexao.Close(); }
         }
     }
 }
